@@ -2,25 +2,25 @@
 
 const string outputPath = @"C:\MyProjects\Backend\MyProjects\ConsoleProjectTest\ConsoleApp1\output.txt";
 
-var file1Lines = File.ReadAllText(file1Path).Split(',').ToList();
-//var file1Lines = File.ReadAllLines(file1Path).Select(line => line.Trim()).ToList();
+var text = File.ReadAllText(file1Path);
 
-var count = 0;
-var outputLines = new List<string>();
+var codes = text
+    .Split(new[] { ',', '\r', '\n', ' ', '\t' },
+        StringSplitOptions.RemoveEmptyEntries)
+    .Select(s => s.Trim())
+    .Where(s => !string.IsNullOrEmpty(s));
 
-file1Lines = file1Lines.Select(x => x.Trim()).ToList();
+var outputLines = codes
+    .Select(code => $"\"{code}\",");
 
-foreach (var line in file1Lines)
+File.WriteAllLines(outputPath, outputLines);
+
+
+foreach (var line in outputLines)
 {
-    var s =  $"\"{line}\",";
-
-    Console.WriteLine(s);
-    count++; ;
-    outputLines.Add(s);
+    Console.WriteLine(line);
 }
 
-File.WriteAllText(outputPath, string.Join(',', outputLines));
 
-Console.WriteLine($"\n\nCount: {count}");
-
+Console.WriteLine($"\n\nRESULT count:  {outputLines.Count()}.");
 Console.WriteLine("END CODE !!!============================!!!:");

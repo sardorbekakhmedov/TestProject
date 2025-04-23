@@ -9,6 +9,8 @@ namespace WebTest.Controllers;
 public class ExampleController : ControllerBase
 {
     private readonly ILogger<ExampleController> _logger;
+    private int _count = 0;
+    private int _countNoResult = 0;
 
     public ExampleController(ILogger<ExampleController> logger)
     {
@@ -30,8 +32,7 @@ public class ExampleController : ControllerBase
         var connectionString = "Host=192.168.3.101;Port=5252;Database=dbcorporateex;Username=dev;Password=P@$$w0rd";
        // var connectionStringPROD = "Host=192.168.122.23;Port=5432;Database=dbcorporateex;Username=cprn_prod;Password=P5fnBvw9xdBGquWKaLs7;MaxPoolSize=500;Pooling=true;;Timeout=30;Command Timeout=30";
 
-        var count = 0;
-        var countNoResult = 0;
+
         // var queryResultat = GetQueryResultat();
         var queryResultat = GetQueryResultatFromContract();
 
@@ -87,7 +88,7 @@ public class ExampleController : ControllerBase
                     Console.WriteLine($"!!!!!!!!!!!!!!!!!!!!! ====>  ContractNumber:   {contractNumber}   <====   !!!!!!!!!!!!!!!!!!!");
                     Console.WriteLine("!!!!!!!!!!!!!!!!!!!!!! ====>  DOCID NULL  <====   !!!!!!!!!!!!!!!!!!!!");
                     Console.WriteLine("____________________________________________________________________________________________________");
-                    countNoResult++;
+                    _countNoResult++;
                     continue;
                     var guid = Guid.NewGuid();
                     docid = await InsertQueryContractDocumentAsync(connection, item.ContractNumber, item.CustomerId, item.ProviderId, item.NewLotId, guid);
@@ -116,25 +117,22 @@ public class ExampleController : ControllerBase
                     result.PAYLOAD.GRAFICS.FirstOrDefault()!.AVANS = avansSum;
                     result.PAYLOAD.LINKS.FirstOrDefault()!.LINK = newLink;
 
-                    Console.WriteLine($"LOT_ID: {item.BudgetLotId}");
-                    Console.WriteLine($"Request ID: {result.REQUEST_ID}, Method: {result.METHOD_NAME}");
-                    Console.WriteLine($"Vendor: {result.PAYLOAD.VENDORNAME}");
-                    Console.WriteLine($"First Tovar Name: {result.PAYLOAD.SPECIFICATIONS.FirstOrDefault()?.TOVARNAME}");
-                    Console.WriteLine($"CreatedAt: {item.DataTime}");
+                    Console.WriteLine($"ContractNumber: {item.ContractNumber}");
+                    Console.WriteLine("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
 
                     await SendResultAsync(result, item.BudgetLotId, "RESULTAT");
-                    count++;
+                    _count++;
                 }
                 catch (Exception jsonEx)
                 {
                     Console.WriteLine($"Ошибка десериализации JSON: {jsonEx.Message}");
                 }
 
-                Console.WriteLine(" ===========>>> COUNT: " + count);
+                Console.WriteLine(" ===========>>> COUNT: " + _count);
             }
 
-            Console.WriteLine(" =================>>>  FINISH COUNT: " + count + "  <<< ===================");
-            Console.WriteLine(" =================>>>  FINISH Jo'natilmaganlar soni:  " + countNoResult + "  <<< ===================");
+            Console.WriteLine(" =================>>>  FINISH success COUNT: " + _count + "  <<< ===================");
+            Console.WriteLine(" =================>>>  FINISH Jo'natilmaganlar soni:  " + _countNoResult + "  <<< ===================");
         }
         catch (Exception ex)
         {
