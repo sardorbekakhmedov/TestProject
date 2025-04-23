@@ -1,0 +1,34 @@
+const string file1Path = @"C:\XLAM\ConsoleProjectTest\ConsoleApp1\NewFile1.txt"; 
+const string file2Path = @"C:\XLAM\ConsoleProjectTest\ConsoleApp1\NewFile2.txt";
+
+const string outputPath = @"C:\XLAM\ConsoleProjectTest\ConsoleApp1\output.txt";
+
+
+var file1Lines = File.ReadAllText(file1Path).Split(',').ToList();
+var file2Lines = File.ReadAllText(file2Path).Split(',').ToList();
+
+Console.WriteLine($"File1: {string.Join('|', file1Lines)}");
+Console.WriteLine($"File2: {string.Join('|', file2Lines)}");
+
+Console.WriteLine("RESULTAT: \n");
+
+var count = 0;
+var outputLines = new List<string>();
+
+file1Lines = file1Lines.Select(x => x.Trim()).ToList();
+file2Lines = file2Lines.Select(x => x.Trim()).ToList();
+
+foreach (var line in file2Lines)
+{
+    if(file1Lines.Contains(line))
+        continue;
+    
+    count++; ;
+    outputLines.Add(line);
+}
+
+File.WriteAllText(outputPath, string.Join(',', outputLines));
+
+Console.WriteLine($"Count: {count}");
+
+Console.WriteLine("END CODE !!!============================!!!:");

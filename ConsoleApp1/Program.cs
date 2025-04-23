@@ -1,0 +1,26 @@
+﻿const string file1Path = @"C:\XLAM\ConsoleProjectTest\ConsoleApp1\NewFile1.txt"; 
+
+const string outputPath = @"C:\XLAM\ConsoleProjectTest\ConsoleApp1\output.txt";
+
+var file1Lines = File.ReadAllText(file1Path).Split(',').ToList();
+//var file1Lines = File.ReadAllLines(file1Path).Select(line => line.Trim()).ToList();
+
+var count = 0;
+var outputLines = new List<string>();
+
+file1Lines = file1Lines.Select(x => x.Trim()).ToList();
+
+foreach (var line in file1Lines)
+{
+    var s =  $"\"{line}\",";
+
+    Console.WriteLine(s);
+    count++; ;
+    outputLines.Add(s);
+}
+
+File.WriteAllText(outputPath, string.Join(',', outputLines));
+
+Console.WriteLine($"\n\nCount: {count}");
+
+Console.WriteLine("END CODE !!!============================!!!:");

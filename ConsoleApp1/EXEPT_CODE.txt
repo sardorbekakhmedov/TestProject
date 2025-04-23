@@ -1,0 +1,34 @@
+
+const string file1Path = @"C:\Users\sardorak\Desktop\test.txt"; 
+const string file2Path = @"C:\Users\sardorak\Desktop\termp.txt";
+const string outputPath = @"C:\Users\sardorak\Desktop\output.txt";
+
+
+var file1Lines = File.ReadAllLines(file1Path).Select(line => line.Trim()).ToList();
+var file2Lines = File.ReadAllLines(file2Path).Select(line => line.Trim()).ToList();
+
+Console.WriteLine($"File1: {file1Lines.Distinct().Count()}");
+Console.WriteLine($"File2: {file2Lines.Distinct().Count()}");
+
+// Birinchi faylda mavjud bo'lgan, ammo ikkinchisida mavjud bo'lmagan elementlarni toping
+/*
+var exceptLines = file1Lines.Except(file2Lines).ToList();
+*/
+
+Console.WriteLine("Ikkinchi faylda bo'lmagan elementlar: ");
+
+var count = 0;
+var outputLines = new List<string>();
+
+foreach (var line in file1Lines)
+{
+    count++;
+    var formattedLine = $"'{line}',";
+        // Console.WriteLine(formattedLine);
+    outputLines.Add(formattedLine);
+}
+
+File.WriteAllLines(outputPath, outputLines);
+
+Console.WriteLine($"Count: {count}");
+Console.WriteLine("END CODE !!!============================!!!:");

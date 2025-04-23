@@ -1,0 +1,42 @@
+class Program
+{
+    static void Main()
+    {
+        var dd = new Simple { id = 44, Type = 999 };
+
+        var ff = dd;
+        
+        List<Simple> list = new List<Simple>
+        {
+            new Simple
+            {
+                id = 55,
+                Type = 777
+            },
+
+            new Simple
+            {
+                id = 56,
+                Type = 555
+            }
+        };
+        
+        var temp = list.FirstOrDefault(x => x.id == 55);
+
+        if (temp != null)
+        {
+            temp.Type = 1;
+        }
+
+        foreach (var simple in list)
+        {
+            Console.WriteLine(simple.Type);
+        }
+    }
+}
+
+public class Simple
+{
+    public int id { get; set; }
+    public int Type { get; set; }
+}
