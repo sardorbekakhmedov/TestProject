@@ -11,6 +11,9 @@ public class ExampleController : ControllerBase
     private readonly ILogger<ExampleController> _logger;
     private int _count = 0;
     private int _countNoResult = 0;
+    private readonly List<string> _resultatSuccess = [];
+    private readonly List<string> _resultatAnswer = [];
+
 
     public ExampleController(ILogger<ExampleController> logger)
     {
@@ -25,14 +28,13 @@ public class ExampleController : ControllerBase
             await CreateQueryAsync(contractNumber);
         } 
         
-        Console.WriteLine(" =================>>>  FINISH success COUNT: " + _count + "  <<< ===================");
+        Console.WriteLine("\n\n =================>>>  FINISH success COUNT: " + _count + "  <<< ===================");
         Console.WriteLine(" =================>>>  FINISH Jo'natilmaganlar soni:  " + _countNoResult + "  <<< ===================");
         
-        return Ok($"=================>>>  FINISH success COUNT: \"  {_count}  \"  <<< ===================\n\n" +
-                  $"=================>>>  FINISH Jo'natilmaganlar soni:  \"  {_countNoResult}  \"  <<< ===================");
+        return Ok(new { error = _resultatAnswer, success = _resultatSuccess, successCount = _resultatSuccess.Count,  errorCount = _resultatAnswer.Count });
     }
 
-    private async Task<(int countSuccess, int countNoResult)> CreateQueryAsync(string contractNumber)
+    private async Task<(List<string>, List<string>)> CreateQueryAsync(string contractNumber)
     {
         var connectionString = "Host=192.168.3.101;Port=5252;Database=dbcorporateex;Username=dev;Password=P@$$w0rd";
        // var connectionStringPROD = "Host=192.168.122.23;Port=5432;Database=dbcorporateex;Username=cprn_prod;Password=P5fnBvw9xdBGquWKaLs7;MaxPoolSize=500;Pooling=true;;Timeout=30;Command Timeout=30";
@@ -71,6 +73,7 @@ public class ExampleController : ControllerBase
                     }
                 }
             }
+
             
             foreach (var item in items)
             {
@@ -80,9 +83,13 @@ public class ExampleController : ControllerBase
                     || (methodName == "CONTRACT_INFO" && response != null && response.Contains("\"STATE\": 2")) 
                     || methodName == "SUCCESS_INFO" || methodName == "RESULTAT" || methodName == "QUERY_FACTURA" || methodName == "QUERY_PAYS_BY_LOTID")
                 {
-                    Console.WriteLine($"!!!!!!!!!!!!!!!!!!!!! ====>  ContractNumber:   {contractNumber}   <====   !!!!!!!!!!!!!!!!!!!");
-                    Console.WriteLine($"!!!!!!!!!!!!!!!!!!!!! ====>  Oldin Resultat jo'natilgan   <====   !!!!!!!!!!!!!!!!!!!");
-                    Console.WriteLine("____________________________________________________________________________________________________");
+
+                    var text1 = $" ContractNumber:   {contractNumber},  Comment:   Oldin Resultat jo'natilgan !  ";
+                    
+                    _resultatAnswer.Add(text1);
+                    
+                    Console.WriteLine(text1);
+                    Console.WriteLine("__________________________________________________");
                     _countNoResult++;
                     continue;
                 }
@@ -91,9 +98,10 @@ public class ExampleController : ControllerBase
 
                 if (docid == null)
                 {
-                    Console.WriteLine($"!!!!!!!!!!!!!!!!!!!!! ====>  ContractNumber:   {contractNumber}   <====   !!!!!!!!!!!!!!!!!!!");
-                    Console.WriteLine("!!!!!!!!!!!!!!!!!!!!!! ====>  DOCID NULL  <====   !!!!!!!!!!!!!!!!!!!!");
-                    Console.WriteLine("____________________________________________________________________________________________________");
+                    var text1 = $" ContractNumber:   {contractNumber},  Comment:  DocID null !";
+                    
+                    Console.WriteLine(text1);
+                    Console.WriteLine("__________________________________________________");
                     _countNoResult++;
                     continue;
                     var guid = Guid.NewGuid();
@@ -123,11 +131,14 @@ public class ExampleController : ControllerBase
                     result.PAYLOAD.GRAFICS.FirstOrDefault()!.AVANS = avansSum;
                     result.PAYLOAD.LINKS.FirstOrDefault()!.LINK = newLink;
 
-                    Console.WriteLine($"ContractNumber: {item.ContractNumber}");
+                    var text1 = $" ContractNumber:   {contractNumber},   Comment:   SUCCESS  !";
+                    
+                    Console.WriteLine(text1);
                     Console.WriteLine("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
 
                     await SendResultAsync(result, item.BudgetLotId, "RESULTAT");
                     _count++;
+                    _resultatSuccess.Add(text1);
                 }
                 catch (Exception jsonEx)
                 {
@@ -141,8 +152,8 @@ public class ExampleController : ControllerBase
         {
             Console.WriteLine("Ошибка подключения или выполнения запроса: " + ex.Message);
         }
-        
-        return (_count, _countNoResult);
+
+        return (_resultatAnswer, _resultatSuccess);
     }
 
     private async Task SendResultAsync(BudjetResult result, decimal budgetLotId, string method)
