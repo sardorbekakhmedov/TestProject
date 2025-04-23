@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\MyProjects\\Backend\\MyProjects\\ConsoleProjectTest\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{CDBC3E8F-EA07-4AE2-B3F1-0F1A3BD9F114}|WebTest\\WebTest.csproj|c:\\myprojects\\backend\\myprojects\\consoleprojecttest\\webtest\\controllers\\examplecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CDBC3E8F-EA07-4AE2-B3F1-0F1A3BD9F114}|WebTest\\WebTest.csproj|solutionrelative:webtest\\controllers\\examplecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{CDBC3E8F-EA07-4AE2-B3F1-0F1A3BD9F114}|WebTest\\WebTest.csproj|c:\\myprojects\\backend\\myprojects\\consoleprojecttest\\webtest\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CDBC3E8F-EA07-4AE2-B3F1-0F1A3BD9F114}|WebTest\\WebTest.csproj|solutionrelative:webtest\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -31,6 +35,19 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "ExampleController.cs",
+              "DocumentMoniker": "C:\\MyProjects\\Backend\\MyProjects\\ConsoleProjectTest\\WebTest\\Controllers\\ExampleController.cs",
+              "RelativeDocumentMoniker": "WebTest\\Controllers\\ExampleController.cs",
+              "ToolTip": "C:\\MyProjects\\Backend\\MyProjects\\ConsoleProjectTest\\WebTest\\Controllers\\ExampleController.cs",
+              "RelativeToolTip": "WebTest\\Controllers\\ExampleController.cs",
+              "ViewState": "AgIAAFAAAAAAAAAAAAAwwGQAAABdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-23T12:13:16.137Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\MyProjects\\Backend\\MyProjects\\ConsoleProjectTest\\WebTest\\Program.cs",
               "RelativeDocumentMoniker": "WebTest\\Program.cs",
@@ -38,8 +55,7 @@
               "RelativeToolTip": "WebTest\\Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-08T07:29:44.283Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-08T07:29:44.283Z"
             }
           ]
         }

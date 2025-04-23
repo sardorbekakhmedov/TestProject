@@ -40,7 +40,7 @@
               "RelativeDocumentMoniker": "WebTest\\Controllers\\ExampleController.cs",
               "ToolTip": "C:\\MyProjects\\Backend\\MyProjects\\ConsoleProjectTest\\WebTest\\Controllers\\ExampleController.cs",
               "RelativeToolTip": "WebTest\\Controllers\\ExampleController.cs",
-              "ViewState": "AgIAAEQAAAAAAAAAAAAwwAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAADUAAAAAAAAAAAAwwEwAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-23T12:13:16.137Z",
               "EditorCaption": ""
@@ -55,8 +55,7 @@
               "RelativeToolTip": "WebTest\\Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-08T07:29:44.283Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-08T07:29:44.283Z"
             }
           ]
         }

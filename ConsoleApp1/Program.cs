@@ -5,7 +5,7 @@ const string outputPath = @"C:\MyProjects\Backend\MyProjects\ConsoleProjectTest\
 var text = File.ReadAllText(file1Path);
 
 var codes = text
-    .Split(new[] { ',', '\r', '\n', ' ', '\t' },
+    .Split(new[] {'.', ',', '\r', '\n', ' ', '\t' },
         StringSplitOptions.RemoveEmptyEntries)
     .Select(s => s.Trim())
     .Where(s => !string.IsNullOrEmpty(s));

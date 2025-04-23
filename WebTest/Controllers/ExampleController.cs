@@ -84,12 +84,12 @@ public class ExampleController : ControllerBase
                     || methodName == "SUCCESS_INFO" || methodName == "RESULTAT" || methodName == "QUERY_FACTURA" || methodName == "QUERY_PAYS_BY_LOTID")
                 {
 
-                    var text1 = $" ContractNumber:   {contractNumber},  Comment:   Oldin Resultat jo'natilgan !  ";
+                    var text1 = $" ContractNumber:   {contractNumber},  Comment:   Oldin Resultat jo'natilgan!,  Last method:   {methodName}  ";
                     
                     _resultatAnswer.Add(text1);
                     
                     Console.WriteLine(text1);
-                    Console.WriteLine("__________________________________________________");
+                    Console.WriteLine("_________________________________________________________________________________________________________");
                     _countNoResult++;
                     continue;
                 }
@@ -98,11 +98,11 @@ public class ExampleController : ControllerBase
 
                 if (docid == null)
                 {
-                    var text1 = $" ContractNumber:   {contractNumber},  Comment:  DocID null !";
+                    var text1 = $" ContractNumber:   {contractNumber},  Comment:  DocID null !,  Last method:   {methodName} ";
                     
                     _resultatAnswer.Add(text1);
                     Console.WriteLine(text1);
-                    Console.WriteLine("__________________________________________________");
+                    Console.WriteLine("_________________________________________________________________________________________________________");
                     _countNoResult++;
                     continue;
                     var guid = Guid.NewGuid();
@@ -132,10 +132,10 @@ public class ExampleController : ControllerBase
                     result.PAYLOAD.GRAFICS.FirstOrDefault()!.AVANS = avansSum;
                     result.PAYLOAD.LINKS.FirstOrDefault()!.LINK = newLink;
 
-                    var text1 = $" ContractNumber:   {contractNumber},   Comment:   SUCCESS  !";
+                    var text1 = $" ContractNumber:   {contractNumber},   Comment:   DONE!,   Last method:  RESULTAT ";
                     
                     Console.WriteLine(text1);
-                    Console.WriteLine("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+                    Console.WriteLine("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
 
                     await SendResultAsync(result, item.BudgetLotId, "RESULTAT");
                     _count++;
