@@ -24,10 +24,15 @@ public class ExampleController : ControllerBase
         {
             await CreateQueryAsync(contractNumber);
         } 
-        return Ok("===>>> ok  <<<===");
+        
+        Console.WriteLine(" =================>>>  FINISH success COUNT: " + _count + "  <<< ===================");
+        Console.WriteLine(" =================>>>  FINISH Jo'natilmaganlar soni:  " + _countNoResult + "  <<< ===================");
+        
+        return Ok($"=================>>>  FINISH success COUNT: \"  {_count}  \"  <<< ===================\n\n" +
+                  $"=================>>>  FINISH Jo'natilmaganlar soni:  \"  {_countNoResult}  \"  <<< ===================");
     }
 
-    private async Task CreateQueryAsync(string contractNumber)
+    private async Task<(int countSuccess, int countNoResult)> CreateQueryAsync(string contractNumber)
     {
         var connectionString = "Host=192.168.3.101;Port=5252;Database=dbcorporateex;Username=dev;Password=P@$$w0rd";
        // var connectionStringPROD = "Host=192.168.122.23;Port=5432;Database=dbcorporateex;Username=cprn_prod;Password=P5fnBvw9xdBGquWKaLs7;MaxPoolSize=500;Pooling=true;;Timeout=30;Command Timeout=30";
@@ -78,6 +83,7 @@ public class ExampleController : ControllerBase
                     Console.WriteLine($"!!!!!!!!!!!!!!!!!!!!! ====>  ContractNumber:   {contractNumber}   <====   !!!!!!!!!!!!!!!!!!!");
                     Console.WriteLine($"!!!!!!!!!!!!!!!!!!!!! ====>  Oldin Resultat jo'natilgan   <====   !!!!!!!!!!!!!!!!!!!");
                     Console.WriteLine("____________________________________________________________________________________________________");
+                    _countNoResult++;
                     continue;
                 }
                     
@@ -130,14 +136,13 @@ public class ExampleController : ControllerBase
 
                 Console.WriteLine(" ===========>>> COUNT: " + _count);
             }
-
-            Console.WriteLine(" =================>>>  FINISH success COUNT: " + _count + "  <<< ===================");
-            Console.WriteLine(" =================>>>  FINISH Jo'natilmaganlar soni:  " + _countNoResult + "  <<< ===================");
         }
         catch (Exception ex)
         {
             Console.WriteLine("Ошибка подключения или выполнения запроса: " + ex.Message);
         }
+        
+        return (_count, _countNoResult);
     }
 
     private async Task SendResultAsync(BudjetResult result, decimal budgetLotId, string method)
