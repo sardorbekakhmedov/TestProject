@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "AVC8NKT7Tug=",
+  "dgSpecHash": "q5xR4+H0eac=",
   "success": true,
-  "projectFilePath": "C:\\XLAM\\ConsoleProjectTest\\WebTest\\WebTest.csproj",
+  "projectFilePath": "C:\\MyProjects\\Backend\\MyProjects\\ConsoleProjectTest\\WebTest\\WebTest.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\sardorak\\.nuget\\packages\\microsoft.entityframeworkcore\\8.0.11\\microsoft.entityframeworkcore.8.0.11.nupkg.sha512",
     "C:\\Users\\sardorak\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\8.0.11\\microsoft.entityframeworkcore.abstractions.8.0.11.nupkg.sha512",

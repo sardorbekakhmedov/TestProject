@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\XLAM\\ConsoleProjectTest\\ConsoleApp1\\ConsoleApp1.csproj": {}
+    "C:\\MyProjects\\Backend\\MyProjects\\ConsoleProjectTest\\ConsoleApp1\\ConsoleApp1.csproj": {}
   },
   "projects": {
-    "C:\\XLAM\\ConsoleProjectTest\\ConsoleApp1\\ConsoleApp1.csproj": {
+    "C:\\MyProjects\\Backend\\MyProjects\\ConsoleProjectTest\\ConsoleApp1\\ConsoleApp1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\XLAM\\ConsoleProjectTest\\ConsoleApp1\\ConsoleApp1.csproj",
+        "projectUniqueName": "C:\\MyProjects\\Backend\\MyProjects\\ConsoleProjectTest\\ConsoleApp1\\ConsoleApp1.csproj",
         "projectName": "ConsoleApp1",
-        "projectPath": "C:\\XLAM\\ConsoleProjectTest\\ConsoleApp1\\ConsoleApp1.csproj",
+        "projectPath": "C:\\MyProjects\\Backend\\MyProjects\\ConsoleProjectTest\\ConsoleApp1\\ConsoleApp1.csproj",
         "packagesPath": "C:\\Users\\sardorak\\.nuget\\packages\\",
-        "outputPath": "C:\\XLAM\\ConsoleProjectTest\\ConsoleApp1\\obj\\",
+        "outputPath": "C:\\MyProjects\\Backend\\MyProjects\\ConsoleProjectTest\\ConsoleApp1\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\sardorak\\AppData\\Roaming\\NuGet\\NuGet.Config",

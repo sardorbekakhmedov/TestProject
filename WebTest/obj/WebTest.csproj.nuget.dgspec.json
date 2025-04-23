@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\XLAM\\ConsoleProjectTest\\WebTest\\WebTest.csproj": {}
+    "C:\\MyProjects\\Backend\\MyProjects\\ConsoleProjectTest\\WebTest\\WebTest.csproj": {}
   },
   "projects": {
-    "C:\\XLAM\\ConsoleProjectTest\\WebTest\\WebTest.csproj": {
+    "C:\\MyProjects\\Backend\\MyProjects\\ConsoleProjectTest\\WebTest\\WebTest.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\XLAM\\ConsoleProjectTest\\WebTest\\WebTest.csproj",
+        "projectUniqueName": "C:\\MyProjects\\Backend\\MyProjects\\ConsoleProjectTest\\WebTest\\WebTest.csproj",
         "projectName": "WebTest",
-        "projectPath": "C:\\XLAM\\ConsoleProjectTest\\WebTest\\WebTest.csproj",
+        "projectPath": "C:\\MyProjects\\Backend\\MyProjects\\ConsoleProjectTest\\WebTest\\WebTest.csproj",
         "packagesPath": "C:\\Users\\sardorak\\.nuget\\packages\\",
-        "outputPath": "C:\\XLAM\\ConsoleProjectTest\\WebTest\\obj\\",
+        "outputPath": "C:\\MyProjects\\Backend\\MyProjects\\ConsoleProjectTest\\WebTest\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\sardorak\\AppData\\Roaming\\NuGet\\NuGet.Config",
