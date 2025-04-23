@@ -100,6 +100,7 @@ public class ExampleController : ControllerBase
                 {
                     var text1 = $" ContractNumber:   {contractNumber},  Comment:  DocID null !";
                     
+                    _resultatAnswer.Add(text1);
                     Console.WriteLine(text1);
                     Console.WriteLine("__________________________________________________");
                     _countNoResult++;
