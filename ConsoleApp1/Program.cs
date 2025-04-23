@@ -1,6 +1,6 @@
-﻿const string file1Path = @"C:\XLAM\ConsoleProjectTest\ConsoleApp1\NewFile1.txt"; 
+﻿const string file1Path = @"C:\MyProjects\Backend\MyProjects\ConsoleProjectTest\ConsoleApp1\NewFile1.txt"; 
 
-const string outputPath = @"C:\XLAM\ConsoleProjectTest\ConsoleApp1\output.txt";
+const string outputPath = @"C:\MyProjects\Backend\MyProjects\ConsoleProjectTest\ConsoleApp1\output.txt";
 
 var file1Lines = File.ReadAllText(file1Path).Split(',').ToList();
 //var file1Lines = File.ReadAllLines(file1Path).Select(line => line.Trim()).ToList();
