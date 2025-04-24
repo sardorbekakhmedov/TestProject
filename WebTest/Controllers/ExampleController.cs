@@ -122,13 +122,13 @@ public class ExampleController : ControllerBase
                     var newLink = $"https://new.cooperation.uz/ocelot/api-shop/Contract/DownloadContractFile?fileId={docid}&lang={oldLinkLanguage}";
 
                     var avansSum = (long)(item.ContractSum * firstPrePaidPercent) / 100;
-                    var taxSum = (long)(item.ContractSum * taxPercent) / 100;
+                    double taxSum = (long)(item.ContractSum * taxPercent) / (double)112;
                     
                     avansSum *= 100;
-                    taxSum *= 100;
+                    taxSum = (long)Math.Floor(taxSum * 100);
 
                     result.PAYLOAD.AVANS = avansSum;
-                    result.PAYLOAD.SUMNDS = taxSum;
+                    result.PAYLOAD.SUMNDS = (long)taxSum;
                     result.PAYLOAD.GRAFICS.FirstOrDefault()!.AVANS = avansSum;
                     result.PAYLOAD.LINKS.FirstOrDefault()!.LINK = newLink;
 
