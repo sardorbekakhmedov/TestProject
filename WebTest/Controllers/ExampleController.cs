@@ -126,9 +126,9 @@ public class ExampleController : ControllerBase
                     
                     avansSum *= 100;
                     taxSum = (long)Math.Floor(taxSum * 100);
-
+                    
                     result.PAYLOAD.AVANS = avansSum;
-                    result.PAYLOAD.SUMNDS = (long)taxSum;
+                    result.PAYLOAD.SUMNDS = 0;
                     result.PAYLOAD.GRAFICS.FirstOrDefault()!.AVANS = avansSum;
                     result.PAYLOAD.LINKS.FirstOrDefault()!.LINK = newLink;
 
