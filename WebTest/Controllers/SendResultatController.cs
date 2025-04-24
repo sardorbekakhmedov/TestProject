@@ -6,16 +6,16 @@ namespace WebTest.Controllers;
 
 [ApiController]
 [Route("[controller]/[action]")]
-public class ExampleController : ControllerBase
+public class SendResultatController : ControllerBase
 {
-    private readonly ILogger<ExampleController> _logger;
+    private readonly ILogger<SendResultatController> _logger;
     private int _count = 0;
     private int _countNoResult = 0;
     private readonly List<string> _resultatSuccess = [];
     private readonly List<string> _resultatAnswer = [];
 
 
-    public ExampleController(ILogger<ExampleController> logger)
+    public SendResultatController(ILogger<SendResultatController> logger)
     {
         _logger = logger;
     }
@@ -128,7 +128,7 @@ public class ExampleController : ControllerBase
                     taxSum = (long)Math.Floor(taxSum * 100);
                     
                     result.PAYLOAD.AVANS = avansSum;
-                    result.PAYLOAD.SUMNDS = 0;
+                    result.PAYLOAD.SUMNDS = (long)taxSum;
                     result.PAYLOAD.GRAFICS.FirstOrDefault()!.AVANS = avansSum;
                     result.PAYLOAD.LINKS.FirstOrDefault()!.LINK = newLink;
 
