@@ -130,7 +130,7 @@ public class SendResultatController : ControllerBase
                     result.PAYLOAD.AVANS = avansSum;
                     result.PAYLOAD.SUMNDS = (long)taxSum;
                     result.PAYLOAD.GRAFICS.FirstOrDefault()!.AVANS = avansSum;
-                    result.PAYLOAD.LINKS.FirstOrDefault()!.LINK = newLink;
+                    result.PAYLOAD.LINKS.LastOrDefault()!.LINK = newLink;
 
                     var text1 = $" ContractNumber:   {contractNumber},   Comment:   DONE!,   Last method:  RESULTAT ";
                     
