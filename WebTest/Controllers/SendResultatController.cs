@@ -66,7 +66,8 @@ public class SendResultatController : ControllerBase
                             NewLotId = reader.GetInt32(4),
                             BudgetLotId = reader.GetDecimal(5),
                             Json = reader.GetString(6),
-                            DataTime = reader.GetDateTime(7)
+                            DataTime = reader.GetDateTime(7),
+                            BudjetLotPkId = reader.GetInt32(8),
                         };
 
                         items.Add(item);
@@ -129,8 +130,11 @@ public class SendResultatController : ControllerBase
                     
                     result.PAYLOAD.AVANS = avansSum;
                     result.PAYLOAD.SUMNDS = (long)taxSum;
+                    result.PAYLOAD.PROC_ID = 19;
+                    result.PAYLOAD.REESTR_ID = item.BudjetLotPkId;
                     result.PAYLOAD.GRAFICS.FirstOrDefault()!.AVANS = avansSum;
                     result.PAYLOAD.LINKS.LastOrDefault()!.LINK = newLink;
+                    result.PAYLOAD.SPECIFICATIONS.FirstOrDefault().TOVAREDIZM = 1;
 
                     var text1 = $" ContractNumber:   {contractNumber},   Comment:   DONE!,   Last method:  RESULTAT ";
                     
@@ -206,7 +210,8 @@ public class SendResultatController : ControllerBase
                     bl.new_lot_id,
                     minfin_histories.lot_id,
                     minfin_histories.request,
-                    minfin_histories.created_at
+                    minfin_histories.created_at,
+                    bl.id
                 FROM budget.minfin_histories
                 join budget.budget_lots bl on minfin_histories.lot_id = bl.lot_id
                 join shop.contract_docs cd on bl.new_lot_id = cd.lot_id
@@ -229,7 +234,8 @@ public class SendResultatController : ControllerBase
             bl.new_lot_id,
             minfin_histories.lot_id,
             minfin_histories.request,
-            minfin_histories.created_at
+            minfin_histories.created_at,
+            bl.id
         FROM budget.minfin_histories
         JOIN budget.budget_lots bl ON minfin_histories.lot_id = bl.lot_id
         JOIN shop.contract_docs cd ON bl.new_lot_id = cd.lot_id
@@ -339,6 +345,9 @@ public class SendResultatController : ControllerBase
         public decimal BudgetLotId { get; set; }
         public string Json { get; set; }
         public DateTime DataTime { get; set; }
+        
+        public int BudjetLotPkId { get; set; }
+
     }
 
     private class LotBaseDto
@@ -415,6 +424,7 @@ public class SendResultatController : ControllerBase
         public string TOVAR { get; set; }
         public string TOVARNAME { get; set; }
         public string TOVARNOTE { get; set; }
+        public int? TOVAREDIZM { get; set; }
         public decimal TOVARAMOUNT { get; set; }
         public long TOVARPRICE { get; set; }
         public long TOVARSUMMA { get; set; }
