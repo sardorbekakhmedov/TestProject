@@ -116,7 +116,7 @@ public class SendResultatController : ControllerBase
                     var firstPrePaidPercent = item.ContractSum >= 1_000_000_000 ? 15 : 30;
                     var taxPercent = 12;
 
-                    var oldLinkLanguage = result!.PAYLOAD.LINKS.FirstOrDefault()!.LINK;
+                    var oldLinkLanguage = result!.PAYLOAD.LINKS.LastOrDefault()!.LINK;
                     oldLinkLanguage = oldLinkLanguage[^2..];
 
                     var newLink = $"https://new.cooperation.uz/ocelot/api-shop/Contract/DownloadContractFile?fileId={docid}&lang={oldLinkLanguage}";
