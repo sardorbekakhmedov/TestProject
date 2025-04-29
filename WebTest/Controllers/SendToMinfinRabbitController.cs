@@ -75,18 +75,6 @@ public class SendToMinfinRabbitController : ControllerBase
         }
     }
     
-    private string GetQueryResultatFromContract()
-    {
-        return @"
-        SELECT
-            bl.lot_id
-        FROM shop.lots lot
-        join shop.contract_docs cd on lot.id = cd.lot_id
-        join budget.budget_lots bl on lot.id = bl.new_lot_id
-        WHERE cd.contract_number = 'N1031425' and cd.status_id = 102 and bl.rmq_status = 'REQUEST_ETP';";
-    }
-    
-
     private async Task<decimal?> GetLotIdByContractNumberAsync(string contractNumber)
     {
         var connectionString = "Host=192.168.3.101;Port=5252;Database=dbcorporateex;Username=dev;Password=P@$$w0rd";
@@ -97,10 +85,10 @@ public class SendToMinfinRabbitController : ControllerBase
         {
             var query = @$"
                  SELECT
-                    bl.lot_id
-                FROM shop.lots lot
-                join shop.contract_docs cd on lot.id = cd.lot_id
-                join budget.budget_lots bl on lot.id = bl.new_lot_id
+                     bl.lot_id
+                FROM shop.contract_docs cd
+                join budget.budget_lots bl on cd.lot_id = bl.new_lot_id
+                join shop.deals deal on deal.id = cd.deal_id
                 WHERE cd.contract_number = @contractNumber and bl.rmq_status = 'REQUEST_ETP' and deal.status_id = 102;";
 
             await using var command = new NpgsqlCommand(query, connection);
