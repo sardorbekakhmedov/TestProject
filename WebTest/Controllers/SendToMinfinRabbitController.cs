@@ -78,7 +78,7 @@ public class SendToMinfinRabbitController : ControllerBase
         FROM shop.lots lot
         join shop.contract_docs cd on lot.id = cd.lot_id
         join budget.budget_lots bl on lot.id = bl.new_lot_id
-        WHERE cd.contract_number = 'N1031425';";
+        WHERE cd.contract_number = 'N1031425' and cd.status_id = 102 and bl.rmq_status = 'REQUEST_ETP';";
     }
     
 
@@ -96,7 +96,7 @@ public class SendToMinfinRabbitController : ControllerBase
                 FROM shop.lots lot
                 join shop.contract_docs cd on lot.id = cd.lot_id
                 join budget.budget_lots bl on lot.id = bl.new_lot_id
-                WHERE cd.contract_number = @contractNumber;";
+                WHERE cd.contract_number = @contractNumber and bl.rmq_status = 'REQUEST_ETP' and deal.status_id = 102;";
 
             await using var command = new NpgsqlCommand(query, connection);
             command.Parameters.AddWithValue("@contractNumber", contractNumber);
