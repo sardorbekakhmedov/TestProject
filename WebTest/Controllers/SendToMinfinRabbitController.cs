@@ -9,6 +9,7 @@ public class SendToMinfinRabbitController : ControllerBase
 {
     private int _count = 0;
     private int _errorCount = 0;
+    private int _noLotCount = 0;
     
     [HttpPost]
     public async Task<IActionResult> SendToMinfinRabbit(ICollection<string> contractNumbers)
@@ -25,6 +26,10 @@ public class SendToMinfinRabbitController : ControllerBase
                     _count++;
 
                 }
+                else
+                {
+                    _noLotCount++;
+                }
             }
             catch (Exception e)
             {
@@ -37,7 +42,7 @@ public class SendToMinfinRabbitController : ControllerBase
         Console.WriteLine("\n\n =================>>>  FINISH success COUNT: " + _count + "  <<< ===================");
         Console.WriteLine(" =================>>>  FINISH Error soni:  " + _errorCount + "  <<< ===================");
         
-        return Ok(new { successCount = _count,  errorCount = _errorCount });
+        return Ok(new { successCount = _count, lotTopilmadiCount = _noLotCount,  errorCount = _errorCount });
     }
     
     private async Task SendResultAsync(decimal budgetLotId, string method)
