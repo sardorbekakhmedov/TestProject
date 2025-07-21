@@ -4,7 +4,7 @@ Ekran razreshenie
 Ona plata seriyasi
 markazy protsessor
 Protsessor nomi
-Markaziy protsessor kursatgichlari
+Markaziy protsessor  kursatgichlari
 Operativ xotira hajmi
 RAM xotirasi
 Videoxotira

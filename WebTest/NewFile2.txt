@@ -1,26 +1,2 @@
-Ekran ulchami
-Kadr tezligi
-Ekran razreshenie
-Ona plata seriyasi
-markazy protsessor
-Protsessor nomi
-Markaziy protsessor  kursatgichlari
-Operativ xotira hajmi
-RAM xotirasi
-Videoxotira
-Discret Videoxotira
-Quvvat bloki
-Qattiq disk xotirasi
-SSD xotira
-SSD NVMe xotira
-Operatsion tizim
-Sovutish tizimi
-ethernet port mavjudligi
-USB type - c ulagichlar soni
-USB 2.0 ulagichlar soni
-USB 3.0 ulagichlar soni
-eshitish vositasi va mikrofon uyasi mavjudligi
-HDMI ulagichning mavjudligi
-Cardreader mavjudligi
-DP ulagichning mavjudligi
-Ishlab chiqaruvchi mamlakat
+
+
