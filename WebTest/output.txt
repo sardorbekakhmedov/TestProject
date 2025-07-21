@@ -1,0 +1,92 @@
+===============>  Персональный компьютер  <===================
+FeatureID:  1447,  FeatureName:  Ekran ulchami,   Position:  1
+FeatureID:  1472,  FeatureName:  Kadr tezligi,   Position:  2
+FeatureID:  1473,  FeatureName:  Ekran razreshenie,   Position:  3
+FeatureID:  ,  FeatureName:  Ona plata seriyasi,   Position:  4
+FeatureID:  1462,  FeatureName:  markazy protsessor,   Position:  5
+FeatureID:  1461,  FeatureName:  Protsessor nomi,   Position:  6
+FeatureID:  1459,  FeatureName:  Markaziy protsessor  kursatgichlari,   Position:  7
+FeatureID:  1475,  FeatureName:  Operativ xotira hajmi,   Position:  8
+FeatureID:  1458,  FeatureName:  RAM xotirasi,   Position:  9
+FeatureID:  1456,1457,  FeatureName:  Videoxotira,   Position:  10
+FeatureID:  1457,  FeatureName:  Discret Videoxotira,   Position:  11
+FeatureID:  1455,  FeatureName:  Quvvat bloki,   Position:  12
+FeatureID:  1451,  FeatureName:  Qattiq disk xotirasi,   Position:  13
+FeatureID:  1787,1450,  FeatureName:  SSD xotira,   Position:  14
+FeatureID:  1449,  FeatureName:  SSD NVMe xotira,   Position:  15
+FeatureID:  1452,  FeatureName:  Operatsion tizim,   Position:  16
+FeatureID:  1453,  FeatureName:  Sovutish tizimi,   Position:  17
+FeatureID:  1469,  FeatureName:  ethernet port mavjudligi,   Position:  18
+FeatureID:  1467,  FeatureName:  USB type - c ulagichlar soni,   Position:  19
+FeatureID:  1466,  FeatureName:  USB 2.0 ulagichlar soni,   Position:  20
+FeatureID:  1465,  FeatureName:  USB 3.0 ulagichlar soni,   Position:  21
+FeatureID:  1464,  FeatureName:  eshitish vositasi va mikrofon uyasi mavjudligi,   Position:  22
+FeatureID:  1463,  FeatureName:  HDMI ulagichning mavjudligi,   Position:  23
+FeatureID:  1460,  FeatureName:  Cardreader mavjudligi,   Position:  24
+FeatureID:  1454,  FeatureName:  DP ulagichning mavjudligi,   Position:  25
+FeatureID:  ,  FeatureName:  Ishlab chiqaruvchi mamlakat,   Position:  26
+==============================================================
+=================>  Моноблок <===================
+FeatureID:  1618,  FeatureName:  Ekran ulchami,   Position:  1
+FeatureID:  1621,  FeatureName:  Ekran razreshenie,   Position:  2
+FeatureID:  1622,  FeatureName:  Kadr tezligi,   Position:  3
+FeatureID:  1628,  FeatureName:  ekranni aylantirish mexanizmi,   Position:  4
+FeatureID:  1629,  FeatureName:  Korpus materiali,   Position:  5
+FeatureID:  1624,  FeatureName:  balandlikni sozlash mexanizmi,   Position:  6
+FeatureID:  1625,  FeatureName:  mobil shassi mavjudligi,   Position:  7
+FeatureID:  1639,  FeatureName:  markazy protsessor,   Position:  8
+FeatureID:  1641,  FeatureName:  Protsessor nomi,   Position:  9
+FeatureID:  ,  FeatureName:  Markaziy protsessor kursatgichlari,   Position:  10
+FeatureID:  ,  FeatureName:  Ona plata seriyasi,   Position:  11
+FeatureID:  ,  FeatureName:  RAM xotira hajmi,   Position:  12
+FeatureID:  1783,  FeatureName:  RAM turi,   Position:  13
+FeatureID:  1643,  FeatureName:  RAM xotirasi,   Position:  14
+FeatureID:  1645,  FeatureName:  Urnatilgan videoxotira,   Position:  15
+FeatureID:  1644,  FeatureName:  Discret videoxotira,   Position:  16
+FeatureID:  1619,  FeatureName:  Operatsion tizim,   Position:  17
+FeatureID:  1620,  FeatureName:  Каттик диск хотираси,   Position:  18
+FeatureID:  1647,  FeatureName:  SSD NVMe xotira,   Position:  19
+FeatureID:  1648,1782,  FeatureName:  SSD xotira,   Position:  20
+FeatureID:  1626,  FeatureName:  ethernet port mavjudligi,   Position:  21
+FeatureID:  1627,  FeatureName:  Cardreader mavjudligi,   Position:  22
+FeatureID:  1630,  FeatureName:  o'rnatilgan dinamikning mavjudligi,   Position:  23
+FeatureID:  1631,  FeatureName:  o'rnatilgan mikrofonning mavjudligi,   Position:  24
+FeatureID:  1632,  FeatureName:  o'rnatilgan web-kamera mavjudligi,   Position:  25
+FeatureID:  1634,  FeatureName:  o'rnatilgan simsiz tarmoq adapterining mavjudligi,   Position:  26
+FeatureID:  1635,  FeatureName:  USB 2.0 ulagichlar soni,   Position:  27
+FeatureID:  1636,  FeatureName:  USB 3.0 ulagichlar soni,   Position:  28
+FeatureID:  1637,  FeatureName:  eshitish vositasi va mikrofon uyasi mavjudligi,   Position:  29
+FeatureID:  1638,  FeatureName:  HDMI ulagichning mavjudligi,   Position:  30
+FeatureID:  1646,  FeatureName:  Klaviatura мы sichqoncha mavjudligi,   Position:  31
+FeatureID:  1649,  FeatureName:  USB type - c ulagichlar soni,   Position:  32
+FeatureID:  ,  FeatureName:  Ishlab chiqaruvchi mamlakat,   Position:  33
+=================>  Интерактивная сенсорная панель  <===================
+FeatureID:  1420,  FeatureName:  Ekran ulchami,   Position:  1
+FeatureID:  1426,  FeatureName:  Bir vaqtning o'zida teginishlar soni,   Position:  2
+FeatureID:  1428,  FeatureName:  Ko'rish burchagi,   Position:  3
+FeatureID:  1429,  FeatureName:  Ekranning javob vaqti,   Position:  4
+FeatureID:  1431,  FeatureName:  Ekran piksel o'lchamlari,   Position:  5
+FeatureID:  1433,  FeatureName:  Kadr tezligi,   Position:  6
+FeatureID:  1427,  FeatureName:  Himoya qoplamasining mavjudligi,   Position:  7
+FeatureID:  1435,  FeatureName:  Korpus materiali,   Position:  8
+FeatureID:  1422,  FeatureName:  Qo'shimcha hisoblash birligining mavjudligi (OPS),   Position:  9
+FeatureID:  1443,  FeatureName:  Qo'shimcha hisoblash birligining (OPS) protsessor nomi,   Position:  10
+FeatureID:  1421,  FeatureName:  Qo'shimcha hisoblash birligining (OPS) xotira hajmi,   Position:  11
+FeatureID:  1423,  FeatureName:  Qo'shimcha hisoblash birligining (OPS) RAM xotirasi hajmi,   Position:  12
+FeatureID:  1432,  FeatureName:  Urnatilgan xotira hajmi,   Position:  13
+FeatureID:  1444,  FeatureName:  Ornatilgan RAM xotirasi hajmi,   Position:  14
+FeatureID:  1446,  FeatureName:  Operatsion tizim,   Position:  15
+FeatureID:  1424,  FeatureName:  Web-kamera mavjudligi,   Position:  16
+FeatureID:  1425,  FeatureName:  Stilus mavjudligi,   Position:  17
+FeatureID:  1434,  FeatureName:  ethernet port mavjudligi,   Position:  18
+FeatureID:  1436,  FeatureName:  o'rnatilgan dinamik mavjudligi,   Position:  19
+FeatureID:  1437,  FeatureName:  o'rnatilgan simsiz tarmoq adapterining mavjudligi,   Position:  20
+FeatureID:  1438,  FeatureName:  USB type - c ulagichlar soni,   Position:  21
+FeatureID:  1439,  FeatureName:  USB 2.0 ulagichlar soni,   Position:  22
+FeatureID:  1440,  FeatureName:  USB 3.0 ulagichlar soni,   Position:  23
+FeatureID:  1441,  FeatureName:  eshitish vositasi va mikrofon uyasi mavjudligi,   Position:  24
+FeatureID:  1442,  FeatureName:  HDMI ulagichning mavjudligi,   Position:  25
+FeatureID:  1700,  FeatureName:  RS-232 orqali masofadan boshqarish va monitoring qilish imkoniyati,   Position:  26
+FeatureID:  1788,  FeatureName:  Masofadan boshqarish pultining mavjudligi,   Position:  27
+FeatureID:  1789,  FeatureName:  O'rnatish to'plami mavjudligi,   Position:  28
+FeatureID:  ,  FeatureName:  Ishlab chiqaruvchi mamlakat,   Position:  29
