@@ -16,7 +16,7 @@ public abstract class Program
                 Thread.Sleep(300); // Biroz kutish
             }
         });
-
+ 
         // Consumer thread
         Thread consumerThread = new Thread(() =>
         {
