@@ -190,11 +190,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\XLAM\\ConsoleProjectTest\\ConsoleProjectTest\\ConsoleProjectTest.csproj",
+      "projectUniqueName": "C:\\MyProjects\\Backend\\MyProjects\\ConsoleProjectTest\\ConsoleProjectTest\\ConsoleProjectTest.csproj",
       "projectName": "ConsoleProjectTest",
-      "projectPath": "C:\\XLAM\\ConsoleProjectTest\\ConsoleProjectTest\\ConsoleProjectTest.csproj",
+      "projectPath": "C:\\MyProjects\\Backend\\MyProjects\\ConsoleProjectTest\\ConsoleProjectTest\\ConsoleProjectTest.csproj",
       "packagesPath": "C:\\Users\\sardorak\\.nuget\\packages\\",
-      "outputPath": "C:\\XLAM\\ConsoleProjectTest\\ConsoleProjectTest\\obj\\",
+      "outputPath": "C:\\MyProjects\\Backend\\MyProjects\\ConsoleProjectTest\\ConsoleProjectTest\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\sardorak\\AppData\\Roaming\\NuGet\\NuGet.Config",

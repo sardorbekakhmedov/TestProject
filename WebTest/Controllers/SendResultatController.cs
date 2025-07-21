@@ -6,11 +6,16 @@ namespace WebTest.Controllers;
 
 [ApiController]
 [Route("[controller]/[action]")]
-public class ExampleController : ControllerBase
+public class SendResultatController : ControllerBase
 {
-    private readonly ILogger<ExampleController> _logger;
+    private readonly ILogger<SendResultatController> _logger;
+    private int _count = 0;
+    private int _countNoResult = 0;
+    private readonly List<string> _resultatSuccess = [];
+    private readonly List<string> _resultatAnswer = [];
 
-    public ExampleController(ILogger<ExampleController> logger)
+
+    public SendResultatController(ILogger<SendResultatController> logger)
     {
         _logger = logger;
     }
@@ -22,16 +27,19 @@ public class ExampleController : ControllerBase
         {
             await CreateQueryAsync(contractNumber);
         } 
-        return Ok("===>>> ok  <<<===");
+        
+        Console.WriteLine("\n\n =================>>>  FINISH success COUNT: " + _count + "  <<< ===================");
+        Console.WriteLine(" =================>>>  FINISH Jo'natilmaganlar soni:  " + _countNoResult + "  <<< ===================");
+        
+        return Ok(new { error = _resultatAnswer, success = _resultatSuccess, successCount = _resultatSuccess.Count,  errorCount = _resultatAnswer.Count });
     }
 
-    private async Task CreateQueryAsync(string contractNumber)
+    private async Task<(List<string>, List<string>)> CreateQueryAsync(string contractNumber)
     {
         var connectionString = "Host=192.168.3.101;Port=5252;Database=dbcorporateex;Username=dev;Password=P@$$w0rd";
        // var connectionStringPROD = "Host=192.168.122.23;Port=5432;Database=dbcorporateex;Username=cprn_prod;Password=P5fnBvw9xdBGquWKaLs7;MaxPoolSize=500;Pooling=true;;Timeout=30;Command Timeout=30";
 
-        var count = 0;
-        var countNoResult = 0;
+
         // var queryResultat = GetQueryResultat();
         var queryResultat = GetQueryResultatFromContract();
 
@@ -58,13 +66,15 @@ public class ExampleController : ControllerBase
                             NewLotId = reader.GetInt32(4),
                             BudgetLotId = reader.GetDecimal(5),
                             Json = reader.GetString(6),
-                            DataTime = reader.GetDateTime(7)
+                            DataTime = reader.GetDateTime(7),
+                            BudjetLotPkId = reader.GetInt32(8),
                         };
 
                         items.Add(item);
                     }
                 }
             }
+
             
             foreach (var item in items)
             {
@@ -74,9 +84,14 @@ public class ExampleController : ControllerBase
                     || (methodName == "CONTRACT_INFO" && response != null && response.Contains("\"STATE\": 2")) 
                     || methodName == "SUCCESS_INFO" || methodName == "RESULTAT" || methodName == "QUERY_FACTURA" || methodName == "QUERY_PAYS_BY_LOTID")
                 {
-                    Console.WriteLine($"!!!!!!!!!!!!!!!!!!!!! ====>  ContractNumber:   {contractNumber}   <====   !!!!!!!!!!!!!!!!!!!");
-                    Console.WriteLine($"!!!!!!!!!!!!!!!!!!!!! ====>  Oldin Resultat jo'natilgan   <====   !!!!!!!!!!!!!!!!!!!");
-                    Console.WriteLine("____________________________________________________________________________________________________");
+
+                    var text1 = $" ContractNumber:   {contractNumber},  Comment:   Oldin Resultat jo'natilgan!,  Last method:   {methodName}  ";
+                    
+                    _resultatAnswer.Add(text1);
+                    
+                    Console.WriteLine(text1);
+                    Console.WriteLine("_________________________________________________________________________________________________________");
+                    _countNoResult++;
                     continue;
                 }
                     
@@ -84,10 +99,12 @@ public class ExampleController : ControllerBase
 
                 if (docid == null)
                 {
-                    Console.WriteLine($"!!!!!!!!!!!!!!!!!!!!! ====>  ContractNumber:   {contractNumber}   <====   !!!!!!!!!!!!!!!!!!!");
-                    Console.WriteLine("!!!!!!!!!!!!!!!!!!!!!! ====>  DOCID NULL  <====   !!!!!!!!!!!!!!!!!!!!");
-                    Console.WriteLine("____________________________________________________________________________________________________");
-                    countNoResult++;
+                    var text1 = $" ContractNumber:   {contractNumber},  Comment:  DocID null !,  Last method:   {methodName} ";
+                    
+                    _resultatAnswer.Add(text1);
+                    Console.WriteLine(text1);
+                    Console.WriteLine("_________________________________________________________________________________________________________");
+                    _countNoResult++;
                     continue;
                     var guid = Guid.NewGuid();
                     docid = await InsertQueryContractDocumentAsync(connection, item.ContractNumber, item.CustomerId, item.ProviderId, item.NewLotId, guid);
@@ -100,46 +117,48 @@ public class ExampleController : ControllerBase
                     var firstPrePaidPercent = item.ContractSum >= 1_000_000_000 ? 15 : 30;
                     var taxPercent = 12;
 
-                    var oldLinkLanguage = result!.PAYLOAD.LINKS.FirstOrDefault()!.LINK;
+                    var oldLinkLanguage = result!.PAYLOAD.LINKS.LastOrDefault()!.LINK;
                     oldLinkLanguage = oldLinkLanguage[^2..];
 
                     var newLink = $"https://new.cooperation.uz/ocelot/api-shop/Contract/DownloadContractFile?fileId={docid}&lang={oldLinkLanguage}";
 
                     var avansSum = (long)(item.ContractSum * firstPrePaidPercent) / 100;
-                    var taxSum = (long)(item.ContractSum * taxPercent) / 100;
+                    double taxSum = (long)(item.ContractSum * taxPercent) / (double)112;
                     
                     avansSum *= 100;
-                    taxSum *= 100;
-
+                    taxSum = (long)Math.Floor(taxSum * 100);
+                    
                     result.PAYLOAD.AVANS = avansSum;
-                    result.PAYLOAD.SUMNDS = taxSum;
+                    result.PAYLOAD.SUMNDS = (long)taxSum;
+                    result.PAYLOAD.PROC_ID = 19;
+                    result.PAYLOAD.REESTR_ID = item.BudjetLotPkId;
                     result.PAYLOAD.GRAFICS.FirstOrDefault()!.AVANS = avansSum;
-                    result.PAYLOAD.LINKS.FirstOrDefault()!.LINK = newLink;
+                    result.PAYLOAD.LINKS.LastOrDefault()!.LINK = newLink;
+                    result.PAYLOAD.SPECIFICATIONS.FirstOrDefault().TOVAREDIZM = 1;
 
-                    Console.WriteLine($"LOT_ID: {item.BudgetLotId}");
-                    Console.WriteLine($"Request ID: {result.REQUEST_ID}, Method: {result.METHOD_NAME}");
-                    Console.WriteLine($"Vendor: {result.PAYLOAD.VENDORNAME}");
-                    Console.WriteLine($"First Tovar Name: {result.PAYLOAD.SPECIFICATIONS.FirstOrDefault()?.TOVARNAME}");
-                    Console.WriteLine($"CreatedAt: {item.DataTime}");
+                    var text1 = $" ContractNumber:   {contractNumber},   Comment:   DONE!,   Last method:  RESULTAT ";
+                    
+                    Console.WriteLine(text1);
+                    Console.WriteLine("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
 
                     await SendResultAsync(result, item.BudgetLotId, "RESULTAT");
-                    count++;
+                    _count++;
+                    _resultatSuccess.Add(text1);
                 }
                 catch (Exception jsonEx)
                 {
                     Console.WriteLine($"Ошибка десериализации JSON: {jsonEx.Message}");
                 }
 
-                Console.WriteLine(" ===========>>> COUNT: " + count);
+                Console.WriteLine(" ===========>>> COUNT: " + _count);
             }
-
-            Console.WriteLine(" =================>>>  FINISH COUNT: " + count + "  <<< ===================");
-            Console.WriteLine(" =================>>>  FINISH Jo'natilmaganlar soni:  " + countNoResult + "  <<< ===================");
         }
         catch (Exception ex)
         {
             Console.WriteLine("Ошибка подключения или выполнения запроса: " + ex.Message);
         }
+
+        return (_resultatAnswer, _resultatSuccess);
     }
 
     private async Task SendResultAsync(BudjetResult result, decimal budgetLotId, string method)
@@ -191,7 +210,8 @@ public class ExampleController : ControllerBase
                     bl.new_lot_id,
                     minfin_histories.lot_id,
                     minfin_histories.request,
-                    minfin_histories.created_at
+                    minfin_histories.created_at,
+                    bl.id
                 FROM budget.minfin_histories
                 join budget.budget_lots bl on minfin_histories.lot_id = bl.lot_id
                 join shop.contract_docs cd on bl.new_lot_id = cd.lot_id
@@ -214,7 +234,8 @@ public class ExampleController : ControllerBase
             bl.new_lot_id,
             minfin_histories.lot_id,
             minfin_histories.request,
-            minfin_histories.created_at
+            minfin_histories.created_at,
+            bl.id
         FROM budget.minfin_histories
         JOIN budget.budget_lots bl ON minfin_histories.lot_id = bl.lot_id
         JOIN shop.contract_docs cd ON bl.new_lot_id = cd.lot_id
@@ -324,6 +345,9 @@ public class ExampleController : ControllerBase
         public decimal BudgetLotId { get; set; }
         public string Json { get; set; }
         public DateTime DataTime { get; set; }
+        
+        public int BudjetLotPkId { get; set; }
+
     }
 
     private class LotBaseDto
@@ -400,6 +424,7 @@ public class ExampleController : ControllerBase
         public string TOVAR { get; set; }
         public string TOVARNAME { get; set; }
         public string TOVARNOTE { get; set; }
+        public int? TOVAREDIZM { get; set; }
         public decimal TOVARAMOUNT { get; set; }
         public long TOVARPRICE { get; set; }
         public long TOVARSUMMA { get; set; }

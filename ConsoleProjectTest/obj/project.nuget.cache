@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "J/wX2DmyhXc=",
+  "dgSpecHash": "vWi6AXnYb7Q=",
   "success": true,
-  "projectFilePath": "C:\\XLAM\\ConsoleProjectTest\\ConsoleProjectTest\\ConsoleProjectTest.csproj",
+  "projectFilePath": "C:\\MyProjects\\Backend\\MyProjects\\ConsoleProjectTest\\ConsoleProjectTest\\ConsoleProjectTest.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\sardorak\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.2\\microsoft.extensions.dependencyinjection.abstractions.8.0.2.nupkg.sha512",
     "C:\\Users\\sardorak\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\8.0.2\\microsoft.extensions.logging.abstractions.8.0.2.nupkg.sha512",
