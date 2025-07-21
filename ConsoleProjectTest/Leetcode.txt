@@ -1,0 +1,145 @@
+namespace ConsoleProjectTest;
+
+internal abstract class Program
+{
+    static void Main()
+    {
+
+    }
+    
+    static int MissingInteger(int[] nums)
+    {
+        var sum = nums[0];
+
+        for (var i = 1; i < nums.Length && nums[i-1] +1 == nums[i]; i++)
+        {
+            sum += nums[i];
+        }
+
+        var set = new HashSet<int>(nums);
+
+        while (set.Contains(sum))
+        {
+            sum++;
+        }
+
+        return sum;
+    }
+    
+    static string LongestCommonPrefix(string[] strs)
+    {
+        if (strs == null || strs.Length == 0)
+            return "";
+
+        string prefix = strs[0];
+
+        for (int i = 1; i < strs.Length; i++)
+        {
+            while (strs[i].IndexOf(prefix) != 0)
+            {
+                prefix = prefix.Substring(0, prefix.Length - 1);
+                if (prefix == "")
+                    return "";
+            }
+        }
+
+        return prefix;
+    }
+    
+    static void AddTwoNumbers(ListNode l1, ListNode l2)
+    {
+        var num1 = 0;
+        var num2 = 0;
+
+        while (l1 != null || l2 != null)
+        {
+            if (l1 != null)
+            {
+                num1 += l1.val;
+            
+                if(l1.next != null)
+                    num1 *= 10;
+            
+                l1 = l1.next;
+            }
+
+            if (l2 != null)
+            {
+                num2 += l2.val;
+            
+                if(l2.next != null)
+                    num2 *= 10;
+            
+                l2 = l2.next;
+            }
+        }
+        
+        Console.WriteLine(num1);
+        Console.WriteLine(num2);
+    }
+    
+    // Definition for singly-linked list.
+    public class ListNode 
+    {
+        public int val;
+        public ListNode next;
+
+        public ListNode(int val = 0, ListNode next = null) 
+        {
+            this.val = val;
+            this.next = next;
+        }
+    }
+    
+    static bool IsValid(string s)
+    {
+        var stack = new Stack<char>();
+
+        foreach (var c in s)
+        {
+            if (c is '(' or '{' or '[')
+            {
+                stack.Push(c);
+            }
+            else 
+            {
+                if (stack.Count == 0)
+                {
+                    return false; 
+                }
+                
+                var temp = stack.Pop();
+                if ((temp == '(' && c != ')') || 
+                    (temp == '{' && c != '}') ||
+                    (temp == '[' && c != ']'))
+                {
+                    return false;
+                }
+            }
+        }
+        
+        return stack.Count == 0 ;
+    }
+
+    static int RomanToInt(string str, Dictionary<char, int> romanValues)
+    {
+        var total = 0;
+        var n = str.Length;
+
+        Console.WriteLine(n);
+
+        for (var i = 0; i < n; i++)
+        {
+            if (i < n - 1 && romanValues[str[i]] < romanValues[str[i + 1]])
+            {
+                total -= romanValues[str[i]];
+            }
+            else
+            {
+                total += romanValues[str[i]]; 
+            }
+        }
+
+        return total;
+    }
+}

@@ -1,0 +1,122 @@
+
+var tempModelTargetFeature = new List<Target>()
+{
+    new Target
+    {
+        Type = EnumFeatureType.Number,
+        FeatureId = 4,
+        MinValue = 5,
+        MaxValue = 20
+    },
+    
+    new Target
+    {
+        Type = EnumFeatureType.Select,
+        FeatureId = 3,
+        Values = [8, 10, 19],
+        MinValue = null,
+        MaxValue = null
+    },
+    new Target
+    {
+        Type =EnumFeatureType.Select,
+        FeatureId = 5,
+        Values = [18, 11, 59],
+        MinValue = null,
+        MaxValue = null
+    }
+    
+};
+
+var tempDict = tempModelTargetFeature.Where(x => x.Type == EnumFeatureType.Select).ToDictionary(x => x.FeatureId, v => v.Values);
+var tempFeatureTypeById = tempModelTargetFeature.ToDictionary(x => x.FeatureId, v => v.Type);
+
+var tempStProductFeatureIds = tempModelTargetFeature.Select(x => x.FeatureId);
+
+var tempModelSourceFeature = new List<Dependence>
+{
+    new()
+    {
+        CompanyCertId = 5,
+        SourceFeatureId = null,
+        SourceValuesId = null,
+        TargetFeatureId = 5,
+        TargetValues = [18, 11]
+    },
+    
+    new()
+    {
+        SourceFeatureId = 4,
+        SourceValuesId = 9,
+        TargetFeatureId = 15,
+        TargetValues = [18, 59]
+    }
+};
+
+
+
+var certificateModels = tempModelSourceFeature
+    .Where(x => 
+        x.CompanyCertId != null 
+        && x.TargetFeatureId != 0 
+        // && x.TargetFeatureValueIds.Count > 0
+        && x.SourceFeatureId == null 
+        && x.SourceValuesId == null)
+    .Select(x => new
+    {
+        CertificateId = x.CompanyCertId ?? 0,
+        x.TargetFeatureId,
+        x.TargetValues
+    }).Where(x => x.CertificateId != 0).ToList();
+
+var tempTargetFeatureModelIds = certificateModels.Select(c => c.TargetFeatureId).ToList();
+                
+var checkExistFeatures = tempTargetFeatureModelIds.Except(tempStProductFeatureIds).ToList();
+                
+if (checkExistFeatures.Count > 0)
+    Console.WriteLine($"{string.Join(", ", checkExistFeatures)} Feature ID lar StProduct  ga bog'liq emas!");
+                
+var tempModelTargetFeatureValueIds = certificateModels
+    .Where(x =>
+        tempStProductFeatureIds.Contains(x.TargetFeatureId)
+        && tempFeatureTypeById.ContainsKey(x.TargetFeatureId) && tempFeatureTypeById[x.TargetFeatureId] == EnumFeatureType.Select
+        && tempDict.ContainsKey(x.TargetFeatureId) && x.TargetValues.Except(tempDict[x.TargetFeatureId]).Count() > 0)
+    .SelectMany(x => x.TargetValues.Except(tempDict[x.TargetFeatureId]))
+    .ToList();
+if (tempModelTargetFeatureValueIds.Count > 0) 
+    Console.WriteLine($"{string.Join(", ", tempModelTargetFeatureValueIds)} Feature value lar Feature ga to'g'ri kelmaydi!");
+
+var rr = new List<int>([4, 5, 3, 2]);
+
+Console.WriteLine(!rr.Any(x => x == 8));
+
+
+public enum EnumFeatureType
+{
+    Select = 0,
+    Number = 1
+}
+
+
+
+public class Target
+{
+    public int? MaxValue { get; set; }
+    public int? MinValue { get; set; }
+    public int FeatureId { get; set; }
+    public List<int> Values { get; set; }
+    public EnumFeatureType Type { get; set; }
+}
+
+public class Dependence
+{
+    public int? CompanyCertId { get; set; }
+    public int? SourceFeatureId { get; set; }
+    public int? SourceValuesId { get; set; }
+    
+    public int TargetFeatureId { get; set; }
+    public List<int> TargetValues { get; set; }
+}
+
+
+

@@ -1,0 +1,29 @@
+Ekran ulchami
+Bir vaqtning o'zida teginishlar soni
+Ko'rish burchagi
+Ekranning javob vaqti
+Ekran piksel o'lchamlari
+Kadr tezligi
+Himoya qoplamasining mavjudligi
+Korpus materiali
+Qo'shimcha hisoblash birligining mavjudligi (OPS)
+Qo'shimcha hisoblash birligining (OPS) protsessor nomi
+Qo'shimcha hisoblash birligining (OPS) xotira hajmi
+Qo'shimcha hisoblash birligining (OPS) RAM xotirasi hajmi
+Urnatilgan xotira hajmi
+Ornatilgan RAM xotirasi hajmi
+Operatsion tizim
+Web-kamera mavjudligi
+Stilus mavjudligi
+ethernet port mavjudligi
+o'rnatilgan dinamik mavjudligi
+o'rnatilgan simsiz tarmoq adapterining mavjudligi
+USB type - c ulagichlar soni
+USB 2.0 ulagichlar soni
+USB 3.0 ulagichlar soni
+eshitish vositasi va mikrofon uyasi mavjudligi
+HDMI ulagichning mavjudligi
+RS-232 orqali masofadan boshqarish va monitoring qilish imkoniyati
+Masofadan boshqarish pultining mavjudligi
+O'rnatish to'plami mavjudligi
+Ishlab chiqaruvchi mamlakat
